@@ -105,7 +105,7 @@ soundMute.addEventListener('click', () => {
   themeAudio.muted = !themeAudio.muted;
   soundMute.setAttribute('aria-pressed', String(themeAudio.muted));
   soundMute.setAttribute('aria-label', themeAudio.muted ? 'Unmute theme music' : 'Mute theme music');
-  soundStatus.textContent = themeAudio.muted ? 'Theme / muted' : (themeAudio.paused ? 'Theme / paused' : 'Theme / playing');
+  soundStatus.textContent = themeAudio.muted ? 'Theme / muted' : (themeAudio.paused ? 'Theme / Paused' : 'Theme / Playing');
 });
 soundVolume.addEventListener('input', () => {
   themeAudio.volume = Number(soundVolume.value) / 100;
