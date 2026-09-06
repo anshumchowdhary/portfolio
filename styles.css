@@ -111,3 +111,60 @@ body.awakened { --lime: #9fd7ff; --lime-bright: #c3e8ff; background: #080c16; }.
 body.awakening { animation: screen-shake .42s cubic-bezier(.36,.07,.19,.97) both; }body.awakening h1 { animation: title-glitch .5s steps(2,end) both; }body.awakening .hero-visual { filter: brightness(1.34) saturate(1.3); }body.awakening .site-header { box-shadow: 0 0 2rem rgba(159,215,255,.4); }
 @keyframes awakening-flash { 0% { opacity: 0; } 12% { opacity: 1; } 100% { opacity: 0; } }@keyframes awakening-ring { 0% { opacity: 0; transform: translate(-50%,-50%) scale(.05) rotate(0); } 15% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%,-50%) scale(13) rotate(155deg); } }@keyframes awakening-rune { 0% { opacity: 0; transform: translate(-50%,-50%) scale(.2) rotate(-20deg); } 25% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%,-50%) scale(2.2) rotate(35deg); } }@keyframes awakening-slash { 0% { opacity: 0; translate: -20% -16rem; } 35% { opacity: 1; } 100% { opacity: 0; translate: 20% 16rem; } }@keyframes particle-burst { 0% { opacity: 1; transform: translate(-50%,-50%) scale(1); } 100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(.1); } }@keyframes screen-shake { 10%,90% { transform: translateX(-1px); } 20%,80% { transform: translateX(2px); } 30%,50%,70% { transform: translateX(-3px); } 40%,60% { transform: translateX(3px); } }@keyframes title-glitch { 0% { clip-path: inset(0 0 0 0); transform: translate(0); } 20% { clip-path: inset(12% 0 62% 0); transform: translate(9px,-2px); } 40% { clip-path: inset(60% 0 14% 0); transform: translate(-8px,2px); } 60% { clip-path: inset(31% 0 39% 0); transform: translate(5px,0); } 100% { clip-path: inset(0 0 0 0); transform: translate(0); } }
 @media (prefers-reduced-motion: reduce) { .awakening-fx, .magic-particle { display: none; } body.awakening, body.awakening h1 { animation: none; } }
+
+.bluffly-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(220px, 80%);
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(6px);
+  font-family: "DM Mono", monospace;
+  color: inherit;
+}
+.bluffly-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.bluffly-card-top i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+  display: inline-block;
+  margin-left: 4px;
+}
+.bluffly-messages { display: flex; flex-direction: column; gap: 8px; }
+.bluffly-bubble {
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+.bluffly-bubble-vote {
+  align-self: flex-end;
+  background: rgba(255, 90, 60, 0.25);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+}
+.bluffly-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
