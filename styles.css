@@ -128,3 +128,23 @@ body.awakening { animation: screen-shake .42s cubic-bezier(.36,.07,.19,.97) both
 .bluffly-avatar-c { bottom: 1.6rem; right: 1.3rem; background: #ff8fa8; }
 .bluffly-statement { position: absolute; left: 50%; top: 50%; width: 9.5rem; padding: .55rem .7rem; border-radius: .5rem; background: rgba(245,240,231,.94); color: var(--ink); font: .62rem var(--body); line-height: 1.4; text-align: center; transform: translate(-50%,-50%); box-shadow: 0 .6rem 1.4rem rgba(0,0,0,.35); }
 .bluffly-badge { position: absolute; right: .9rem; bottom: .9rem; display: grid; width: 2.2rem; height: 2.2rem; place-items: center; border-radius: 50%; background: var(--lime); color: var(--ink); font: 1rem var(--display); }
+
+.project-slider { position: relative; }
+.project-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.project-track::-webkit-scrollbar { display: none; }
+.project-track .project-card {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+.project-nav { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 1.75rem; }
+.project-nav-btn { display: grid; width: 2.5rem; height: 2.5rem; place-items: center; border: 1px solid var(--line); background: transparent; color: var(--paper); cursor: pointer; transition: border-color .2s, color .2s; }
+.project-nav-btn:hover { border-color: var(--lime); color: var(--lime); }
+.project-dots { display: flex; gap: .55rem; }
+.project-dot { width: .5rem; height: .5rem; padding: 0; border: 0; border-radius: 50%; background: var(--line); cursor: pointer; transition: background .2s, transform .2s; }
+.project-dot.active { background: var(--lime); transform: scale(1.3); }
