@@ -232,3 +232,36 @@ window.addEventListener('keydown', (event) => {
   }
   if (event.key === 'Escape') setSpellbook(false);
 });
+
+(function () {
+  const track = document.querySelector('.project-track');
+  if (!track) return;
+  const cards = Array.from(track.children);
+  const dots = document.querySelectorAll('.project-dot');
+  let index = 0;
+
+  function goTo(i) {
+    index = Math.max(0, Math.min(cards.length - 1, i));
+    cards[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    dots.forEach((d, di) => d.classList.toggle('active', di === index));
+  }
+
+  document.querySelector('.project-nav-btn[data-dir="-1"]')?.addEventListener('click', () => goTo(index - 1));
+  document.querySelector('.project-nav-btn[data-dir="1"]')?.addEventListener('click', () => goTo(index + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+  let scrollTimeout;
+  track.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const trackLeft = track.getBoundingClientRect().left;
+      let closest = 0, closestDist = Infinity;
+      cards.forEach((card, i) => {
+        const dist = Math.abs(card.getBoundingClientRect().left - trackLeft);
+        if (dist < closestDist) { closestDist = dist; closest = i; }
+      });
+      index = closest;
+      dots.forEach((d, di) => d.classList.toggle('active', di === index));
+    }, 100);
+  });
+})();
